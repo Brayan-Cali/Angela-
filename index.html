@@ -1,148 +1,158 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Corazón con Angela</title>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      background: #000000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <title>Corazón con Agua y Heidi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: #000000; /* Fondo negro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-    .heart-wrapper {
-      width: 400px;
-      height: 400px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        .heart-wrapper {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .heart-svg {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      stroke: #9b1c1c;
-      fill: none;
-      stroke-width: 4;
-      filter: drop-shadow(0 0 15px #4e0000) drop-shadow(0 0 30px #4e0000);
-    }
+        .heart-svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            stroke: #9b1c1c; /* Rojo oscuro para el borde del corazón */
+            fill: none;
+            stroke-width: 4;
+            filter: drop-shadow(0 0 15px #4e0000) drop-shadow(0 0 30px #4e0000); /* Sombra oscura roja */
+        }
 
-    .water-inside {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 400px;
-      height: 400px;
-      background: repeating-radial-gradient(circle, #3f0000, #1a0000 60px, #3f0000 120px);
-      animation: water-move 8s ease-in-out infinite;
-      clip-path: path("M200 360s-180-112-180-220a100 100 0 0 1 180-60 100 100 0 0 1 180 60c0 108-180 220-180 220z");
-      z-index: 1;
-      filter: blur(5px);
-    }
+        .water-inside {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background: repeating-radial-gradient(circle, #3f0000, #1a0000 60px, #3f0000 120px); /* Fondo oscuro con gradiente rojo */
+            animation: water-move 8s ease-in-out infinite;
+            clip-path: path("M150 270s-135-84-135-165a75 75 0 0 1 135-45 75 75 0 0 1 135 45c0 81-135 165-135 165z");
+            z-index: 1;
+            filter: blur(5px); /* Aumento el desenfoque */
+        }
 
-    .heydi-letter {
-      position: absolute;
-      font-family: 'Allura', cursive;
-      font-size: 70px;
-      color: #ffffff;
-      text-shadow: 0 0 20px #fff, 0 0 50px #e8b5ff;
-      z-index: 2;
-      animation: float 4s ease-in-out infinite, glow 3s infinite ease-in-out, pulse 1.5s ease-in-out infinite;
-      text-align: center;
-      line-height: 1.1;
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%;
-    }
+        .heydi-letter {
+            position: absolute;
+            font-family: 'Allura', cursive;
+            font-size: 60px;
+            color: #ffffff; /* Letras blancas */
+            text-shadow: 0 0 20px #fff, 0 0 50px #e8b5ff;
+            z-index: 2;
+            animation: float 4s ease-in-out infinite, glow 3s infinite ease-in-out, pulse 1.5s ease-in-out infinite;
+            text-align: center;
+            line-height: 1.1;
+            transform: translate(-50%, -50%);
+        }
 
-    .star {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 4px;
-      height: 4px;
-      background-color: yellow;
-      border-radius: 50%;
-      opacity: 0;
-      transform: translate(-50%, -50%);
-      animation: sparkle-stars 3s ease-out infinite;
-    }
+        .star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background-color: yellow;
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            animation: sparkle-stars 3s ease-out infinite;
+        }
 
-    .star:nth-child(1) { animation-delay: 0s; }
-    .star:nth-child(2) { animation-delay: 0.2s; }
-    .star:nth-child(3) { animation-delay: 0.4s; }
-    .star:nth-child(4) { animation-delay: 0.6s; }
-    .star:nth-child(5) { animation-delay: 0.8s; }
+        .star:nth-child(1) { animation-delay: 0s; }
+        .star:nth-child(2) { animation-delay: 0.2s; }
+        .star:nth-child(3) { animation-delay: 0.4s; }
+        .star:nth-child(4) { animation-delay: 0.6s; }
+        .star:nth-child(5) { animation-delay: 0.8s; }
 
-    @keyframes sparkle-stars {
-      0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0;
-      }
-      20% {
-        transform: translate(-50%, -100%) scale(1);
-        opacity: 1;
-      }
-      40% {
-        transform: translate(-50%, -200%) scale(1.2);
-        opacity: 0.8;
-      }
-      60% {
-        transform: translate(-50%, -250%) scale(0.8);
-        opacity: 0.5;
-      }
-      100% {
-        transform: translate(-50%, -300%) scale(0);
-        opacity: 0;
-      }
-    }
+        @keyframes sparkle-stars {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: translate(-50%, -100%) scale(1);
+                opacity: 1;
+            }
+            40% {
+                transform: translate(-50%, -200%) scale(1.2);
+                opacity: 0.8;
+            }
+            60% {
+                transform: translate(-50%, -250%) scale(0.8);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -300%) scale(0);
+                opacity: 0;
+            }
+        }
 
-    @keyframes water-move {
-      0% { background-position: 0 0; }
-      50% { background-position: 200px 200px; }
-      100% { background-position: 400px 400px; }
-    }
+        @keyframes water-move {
+            0% { background-position: 0 0; }
+            50% { background-position: 150px 150px; }
+            100% { background-position: 300px 300px; }
+        }
 
-    @keyframes float {
-      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-      50% { transform: translate(-50%, -50%) translateY(-8px); }
-    }
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-8px); }
+        }
 
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 20px #fff, 0 0 50px #e8b5ff; }
-      50% { text-shadow: 0 0 30px #fff, 0 0 70px #e8b5ff; }
-    }
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px #fff, 0 0 50px #e8b5ff; }
+            50% { text-shadow: 0 0 30px #fff, 0 0 70px #e8b5ff; }
+        }
 
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-    }
-  </style>
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <div class="heart-wrapper">
-    <div class="water-inside"></div>
-    <div class="heydi-letter">Angela</div>
-    <div class="star" style="animation-delay: 0s;"></div>
-    <div class="star" style="animation-delay: 0.2s;"></div>
-    <div class="star" style="animation-delay: 0.4s;"></div>
-    <div class="star" style="animation-delay: 0.6s;"></div>
-    <div class="star" style="animation-delay: 0.8s;"></div>
-    <svg class="heart-svg" viewBox="0 0 400 400">
-      <path d="M200 360s-180-112-180-220a100 100 0 0 1 180-60 100 100 0 0 1 180 60c0 108-180 220-180 220z"/>
-    </svg>
-  </div>
+    <div class="heart-wrapper">
+        <!-- Fondo animado como agua -->
+        <div class="water-inside"></div>
+
+        <!-- Letra romántica centrada dentro -->
+        <div class="heydi-letter">Angela</div>
+
+        <!-- Estrellas que salen de la letra -->
+        <div class="star" style="animation-delay: 0s;"></div>
+        <div class="star" style="animation-delay: 0.2s;"></div>
+        <div class="star" style="animation-delay: 0.4s;"></div>
+        <div class="star" style="animation-delay: 0.6s;"></div>
+        <div class="star" style="animation-delay: 0.8s;"></div>
+
+        <!-- Corazón SVG en fondo para dar forma -->
+        <svg class="heart-svg" viewBox="0 0 300 300">
+            <path d="M150 270s-135-84-135-165a75 75 0 0 1 135-45 75 75 0 0 1 135 45c0 81-135 165-135 165z"
+                fill="none"
+                stroke="#9b1c1c" /* Rojo oscuro para el borde del corazón */
+                stroke-width="4"
+                filter="drop-shadow(0 0 15px #4e0000) drop-shadow(0 0 30px #4e0000)" /> <!-- Sombra oscura roja -->
+        </svg>
+    </div>
 </body>
 </html>
